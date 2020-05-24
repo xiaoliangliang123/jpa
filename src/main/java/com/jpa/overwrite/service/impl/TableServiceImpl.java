@@ -14,6 +14,6 @@ public class TableServiceImpl implements TableService {
 
     @Override
     public Table1 getTable1(Integer id) {
-        return tableRepository.getOne(id);
+        return tableRepository.findById(id).get();
     }
 }
