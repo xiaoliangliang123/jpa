@@ -1,8 +1,6 @@
 package com.jpa.overwrite.es.clean;
 
-import com.google.gson.Gson;
-import com.module.jparent.esModel.FieldModel;
-import com.module.jparent.esModel.ResultModel;
+
 import org.apache.http.HttpHost;
 import org.apache.http.entity.ContentType;
 import org.apache.http.nio.entity.NStringEntity;
@@ -20,9 +18,7 @@ import org.elasticsearch.action.index.IndexRequest;
 import org.elasticsearch.action.search.SearchRequest;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.client.*;
-import org.elasticsearch.client.indices.CreateIndexRequest;
-import org.elasticsearch.client.indices.CreateIndexResponse;
-import org.elasticsearch.client.indices.GetIndexRequest;
+
 import org.elasticsearch.cluster.metadata.AliasMetaData;
 import org.elasticsearch.common.text.Text;
 import org.elasticsearch.common.unit.TimeValue;
@@ -53,7 +49,6 @@ public class EsUtil {
     public final static String HOST = "127.0.0.1";
     public final static int PORT = 9200;
     public final static String PROTOCOL = "http";
-    private Gson gson = new Gson();
     private static EsUtil esUtil = null;
 
     private EsUtil() {
