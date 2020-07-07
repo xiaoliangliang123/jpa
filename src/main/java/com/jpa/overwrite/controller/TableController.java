@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableMap;
 import com.jpa.overwrite.entity.Table1;
 import com.jpa.overwrite.service.TableService;
 import com.jpa.overwrite.util.HttpUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;

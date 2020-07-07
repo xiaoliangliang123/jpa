@@ -4,6 +4,9 @@ import ch.qos.logback.classic.pattern.ClassicConverter;
 import ch.qos.logback.classic.spi.ILoggingEvent;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
+
+import javax.servlet.http.HttpServletRequest;
 
 public class HeadConverter extends ClassicConverter {
 
@@ -12,8 +15,8 @@ public class HeadConverter extends ClassicConverter {
 
         try{
             RequestAttributes requestAttributes = RequestContextHolder.currentRequestAttributes();
-            return "xzz" + event.getFormattedMessage();
-
+            HttpServletRequest request = ((ServletRequestAttributes)requestAttributes).getRequest();
+            return request.getRemoteAddr() + event.getFormattedMessage();
         }catch (Exception e){
             return  event.getFormattedMessage();
         }
