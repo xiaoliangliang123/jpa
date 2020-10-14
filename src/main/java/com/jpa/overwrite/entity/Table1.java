@@ -35,5 +35,4 @@ public class Table1 {
     @Column(name="time")
     private String time;
 
-
 }

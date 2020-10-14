@@ -3,6 +3,7 @@ package com.jpa.overwrite.controller;
 import com.google.common.collect.ImmutableMap;
 import com.jpa.overwrite.config.Table1CheckSequence;
 import com.jpa.overwrite.entity.Table1;
+import com.jpa.overwrite.entity.TableVO;
 import com.jpa.overwrite.service.TableService;
 import com.jpa.overwrite.util.HttpUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -20,10 +21,8 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.function.ServerResponse;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.text.SimpleDateFormat;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @RestController
@@ -38,7 +37,15 @@ public class TableController {
     @RequestMapping("/table1/{id}")
     public Table1 table1(@PathVariable("id") Integer id){
         Table1 table1 = tableService.getTable1(id);
+        log.info(table1.toString());
         return table1;
+    }
+
+    @ResponseBody
+    @RequestMapping("/table1/copy")
+    public TableVO table1(TableVO tableVO){
+
+        return tableVO;
     }
 
 
@@ -60,6 +67,10 @@ public class TableController {
     @RequestMapping("/table1/search/{page}")
     public Page<Table1> tableSearch(@PathVariable("page") Integer page){
         Page<Table1> table1 = tableService.getAllTable1ByPage(page);
+        Date date = new Date();
+        String strDateFormat = "yyyy-MM-dd HH:mm:ss.SSS";
+        SimpleDateFormat sdf = new SimpleDateFormat(strDateFormat);
+        log.info(sdf.format(date)+":"+table1.toString());
         return table1;
     }
 
